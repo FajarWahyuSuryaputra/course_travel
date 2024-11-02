@@ -9,11 +9,11 @@ part 'all_destination_state.dart';
 
 class AllDestinationBloc
     extends Bloc<AllDestinationEvent, AllDestinationState> {
-  final GetAllDestinationUsecase usecase;
-  AllDestinationBloc(this.usecase) : super(AllDestinationInitial()) {
+  final GetAllDestinationUsecase _usecase;
+  AllDestinationBloc(this._usecase) : super(AllDestinationInitial()) {
     on<OnGetAllDestination>((event, emit) async {
       emit(AllDestinationLoading());
-      final result = await usecase();
+      final result = await _usecase();
       result.fold(
           (Failure failure) => emit(AllDestinationFailure(failure.message)),
           (data) => emit(AllDestinationLoaded(data)));
