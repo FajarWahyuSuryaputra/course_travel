@@ -1,5 +1,4 @@
 import 'package:course_travel/features/destination/presentation/pages/home_page.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
