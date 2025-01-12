@@ -15,7 +15,6 @@ class Dashboard extends StatelessWidget {
           builder: (context, state) {
             return Container(
               height: 60,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
               child: NavigationBar(
                   selectedIndex: state,
                   onDestinationSelected: (value) {

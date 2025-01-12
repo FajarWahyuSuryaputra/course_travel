@@ -1,3 +1,4 @@
+import 'package:course_travel/common/app_route.dart';
 import 'package:course_travel/features/destination/presentation/bloc/all_destination/all_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/search_destination/search_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/top_destination/top_destination_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:course_travel/features/destination/presentation/pages/dashboard.
 import 'package:course_travel/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,8 +27,14 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (_) => locator<TopDestinationBloc>()),
         BlocProvider(create: (_) => locator<SearchDestinationBloc>()),
       ],
-      child: const MaterialApp(
-        home: Dashboard(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            useMaterial3: true,
+            textTheme: GoogleFonts.poppinsTextTheme(),
+            scaffoldBackgroundColor: Colors.white),
+        initialRoute: AppRoute.dashboard,
+        onGenerateRoute: AppRoute.onGenerateRoute,
       ),
     );
   }
