@@ -13,7 +13,7 @@ class Dashboard extends StatelessWidget {
         elevation: 10,
         child: BlocBuilder<DashboardCubit, int>(
           builder: (context, state) {
-            return Container(
+            return SizedBox(
               height: 60,
               child: NavigationBar(
                   selectedIndex: state,

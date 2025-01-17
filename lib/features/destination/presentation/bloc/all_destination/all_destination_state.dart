@@ -21,10 +21,10 @@ final class AllDestinationFailure extends AllDestinationState {
 }
 
 final class AllDestinationLoaded extends AllDestinationState {
-  final List<DestinationEntity> message;
+  final List<DestinationEntity> data;
 
-  const AllDestinationLoaded(this.message);
+  const AllDestinationLoaded(this.data);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [data];
 }

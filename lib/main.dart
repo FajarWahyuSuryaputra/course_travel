@@ -3,7 +3,6 @@ import 'package:course_travel/features/destination/presentation/bloc/all_destina
 import 'package:course_travel/features/destination/presentation/bloc/search_destination/search_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/top_destination/top_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/cubit/dashboard_cubit.dart';
-import 'package:course_travel/features/destination/presentation/pages/dashboard.dart';
 import 'package:course_travel/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

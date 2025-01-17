@@ -11,13 +11,11 @@ class TopDestinationBloc
   final GetTopDestinationUsecase _usecase;
 
   TopDestinationBloc(this._usecase) : super(TopDestinationInitial()) {
-    on<TopDestinationEvent>((event, emit) {
-      on<OnGetTopDestination>((event, emit) async {
-        emit(TopDestinationLoading());
-        final result = await _usecase();
-        result.fold((failure) => emit(TopDestinationFailure(failure.message)),
-            (data) => emit(TopDestinationLoaded(data)));
-      });
+    on<OnGetTopDestination>((event, emit) async {
+      emit(TopDestinationLoading());
+      final result = await _usecase();
+      result.fold((failure) => emit(TopDestinationFailure(failure.message)),
+          (data) => emit(TopDestinationLoaded(data)));
     });
   }
 }

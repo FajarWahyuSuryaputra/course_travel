@@ -11,8 +11,10 @@ class NetworkInfoImpl implements NetworkInfo {
   @override
   Future<bool> isConnected() async {
     final connectivityResult = await connectivity.checkConnectivity();
-    if (connectivityResult == ConnectivityResult.wifi ||
-        connectivityResult == ConnectivityResult.mobile) {
+    print('connectivityResult $connectivityResult');
+    if (connectivityResult.any((connection) =>
+        connection == ConnectivityResult.wifi ||
+        connection == ConnectivityResult.mobile)) {
       return true;
     }
     return false;

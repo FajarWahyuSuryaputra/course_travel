@@ -21,10 +21,10 @@ final class SearchDestinationFailure extends SearchDestinationState {
 }
 
 final class SearchDestinationLoaded extends SearchDestinationState {
-  final List<DestinationEntity> message;
+  final List<DestinationEntity> data;
 
-  const SearchDestinationLoaded(this.message);
+  const SearchDestinationLoaded(this.data);
 
   @override
-  List<Object> get props => [message];
+  List<Object> get props => [data];
 }

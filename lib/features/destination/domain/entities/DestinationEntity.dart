@@ -12,7 +12,7 @@ class DestinationEntity extends Equatable {
   final List<String> images;
   final List<String> facilities;
 
-  DestinationEntity({
+  const DestinationEntity({
     required this.id,
     required this.name,
     required this.category,
