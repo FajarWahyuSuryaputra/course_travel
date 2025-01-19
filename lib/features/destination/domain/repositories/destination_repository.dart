@@ -1,5 +1,5 @@
 import 'package:course_travel/core/error/failures.dart';
-import 'package:course_travel/features/destination/domain/entities/destinationEntity.dart';
+import 'package:course_travel/features/destination/domain/entities/DestinationEntity.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class DestinationRepository {

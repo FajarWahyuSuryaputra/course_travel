@@ -6,7 +6,7 @@ import 'package:course_travel/core/error/failures.dart';
 import 'package:course_travel/core/platform/network_info.dart';
 import 'package:course_travel/features/destination/data/datasource/destination_local_data_source.dart';
 import 'package:course_travel/features/destination/data/datasource/destination_remote_data_source.dart';
-import 'package:course_travel/features/destination/domain/entities/destinationEntity.dart';
+import 'package:course_travel/features/destination/domain/entities/DestinationEntity.dart';
 import 'package:course_travel/features/destination/domain/repositories/destination_repository.dart';
 import 'package:dartz/dartz.dart';
 

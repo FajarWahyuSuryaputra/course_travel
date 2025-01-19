@@ -1,4 +1,5 @@
 import 'package:course_travel/api/urls.dart';
+import 'package:course_travel/common/app_route.dart';
 import 'package:course_travel/features/destination/presentation/bloc/all_destination/all_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/bloc/top_destination/top_destination_bloc.dart';
 import 'package:course_travel/features/destination/presentation/widget/circle_loading.dart';
@@ -14,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../../domain/entities/destinationEntity.dart';
+import '../../domain/entities/DestinationEntity.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -243,112 +244,121 @@ class _HomePageState extends State<HomePage> {
   Widget itemTopDestination(DestinationEntity destination) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        children: [
-          Expanded(
-              child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: TopDestinationImage(url: URLs.image(destination.cover)),
-          )),
-          const SizedBox(
-            height: 10,
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      destination.name,
-                      style: const TextStyle(
-                          height: 1, fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                          width: 15,
-                          child: const Icon(
-                            Icons.location_on,
-                            color: Colors.grey,
-                            size: 15,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          destination.location,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 15,
-                          width: 15,
-                          child: const Icon(
-                            Icons.fiber_manual_record,
-                            color: Colors.grey,
-                            size: 10,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 4,
-                        ),
-                        Text(
-                          destination.category,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            color: Colors.grey,
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Row(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, AppRoute.detailDestination,
+              arguments: destination);
+        },
+        child: Column(
+          children: [
+            Expanded(
+                child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: TopDestinationImage(url: URLs.image(destination.cover)),
+            )),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      RatingBar.builder(
-                        initialRating: destination.rate,
-                        unratedColor: Colors.grey,
-                        itemBuilder: (context, index) => const Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                        ),
-                        onRatingUpdate: (value) {},
-                        itemSize: 15,
-                        ignoreGestures: true,
+                      Text(
+                        destination.name,
+                        style: const TextStyle(
+                            height: 1,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
-                        width: 4,
+                        height: 8,
                       ),
-                      Text(
-                        '(${DMethod.numberAutoDigit(destination.rate)})',
-                        style: const TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500),
-                      )
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: const Icon(
+                              Icons.location_on,
+                              color: Colors.grey,
+                              size: 15,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            destination.location,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: 15,
+                            width: 15,
+                            child: const Icon(
+                              Icons.fiber_manual_record,
+                              color: Colors.grey,
+                              size: 10,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 4,
+                          ),
+                          Text(
+                            destination.category,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
-                  IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.favorite_border))
-                ],
-              )
-            ],
-          )
-        ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          initialRating: destination.rate,
+                          unratedColor: Colors.grey,
+                          itemBuilder: (context, index) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (value) {},
+                          itemSize: 15,
+                          ignoreGestures: true,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          '(${DMethod.numberAutoDigit(destination.rate)})',
+                          style: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    ),
+                    IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite_border))
+                  ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -413,97 +423,104 @@ class _HomePageState extends State<HomePage> {
   Widget itemAllDestination(DestinationEntity destination) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: ExtendedImage.network(
-              URLs.image(destination.cover),
-              fit: BoxFit.cover,
-              width: 100,
-              height: 100,
-              handleLoadingProgress: true,
-              loadStateChanged: (state) {
-                if (state.extendedImageLoadState == LoadState.failed) {
-                  return AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.grey[300],
-                      child: const Icon(
-                        Icons.broken_image,
-                        color: Colors.black,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, AppRoute.detailDestination,
+              arguments: destination);
+        },
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: ExtendedImage.network(
+                URLs.image(destination.cover),
+                fit: BoxFit.cover,
+                width: 100,
+                height: 100,
+                handleLoadingProgress: true,
+                loadStateChanged: (state) {
+                  if (state.extendedImageLoadState == LoadState.failed) {
+                    return AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.grey[300],
+                        child: const Icon(
+                          Icons.broken_image,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                  );
-                }
-                if (state.extendedImageLoadState == LoadState.loading) {
-                  return AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Colors.grey[300],
-                      child: const CircleLoading(),
-                    ),
-                  );
-                }
-                return null;
-              },
-            ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  destination.name,
-                  style: TextStyle(
-                      height: 1, fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: [
-                    RatingBar.builder(
-                      initialRating: destination.rate,
-                      unratedColor: Colors.grey,
-                      itemBuilder: (context, index) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
+                    );
+                  }
+                  if (state.extendedImageLoadState == LoadState.loading) {
+                    return AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.grey[300],
+                        child: const CircleLoading(),
                       ),
-                      onRatingUpdate: (value) {},
-                      itemSize: 15,
-                      ignoreGestures: true,
-                    ),
-                    const SizedBox(
-                      width: 4,
-                    ),
-                    Text(
-                      '(${DMethod.numberAutoDigit(destination.rate)}/${NumberFormat.compact().format(destination.rateCount)})',
-                      style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  destination.description,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(height: 1, fontSize: 14, color: Colors.grey),
-                )
-              ],
+                    );
+                  }
+                  return null;
+                },
+              ),
             ),
-          )
-        ],
+            SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    destination.name,
+                    style: TextStyle(
+                        height: 1, fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      RatingBar.builder(
+                        initialRating: destination.rate,
+                        unratedColor: Colors.grey,
+                        itemBuilder: (context, index) => const Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        onRatingUpdate: (value) {},
+                        itemSize: 15,
+                        ignoreGestures: true,
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Text(
+                        '(${DMethod.numberAutoDigit(destination.rate)}/${NumberFormat.compact().format(destination.rateCount)})',
+                        style: TextStyle(
+                            color: Colors.grey[500],
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500),
+                      )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    destination.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style:
+                        TextStyle(height: 1, fontSize: 14, color: Colors.grey),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
