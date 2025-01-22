@@ -329,16 +329,14 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Row(
                       children: [
-                        RatingBar.builder(
-                          initialRating: destination.rate,
+                        RatingBarIndicator(
+                          rating: destination.rate,
                           unratedColor: Colors.grey,
                           itemBuilder: (context, index) => const Icon(
                             Icons.star,
                             color: Colors.amber,
                           ),
-                          onRatingUpdate: (value) {},
                           itemSize: 15,
-                          ignoreGestures: true,
                         ),
                         const SizedBox(
                           width: 4,
@@ -483,16 +481,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Row(
                     children: [
-                      RatingBar.builder(
-                        initialRating: destination.rate,
+                      RatingBarIndicator(
+                        rating: destination.rate,
                         unratedColor: Colors.grey,
                         itemBuilder: (context, index) => const Icon(
                           Icons.star,
                           color: Colors.amber,
                         ),
-                        onRatingUpdate: (value) {},
                         itemSize: 15,
-                        ignoreGestures: true,
                       ),
                       const SizedBox(
                         width: 4,
