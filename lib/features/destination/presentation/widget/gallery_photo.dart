@@ -17,8 +17,8 @@ class GalleryPhoto extends StatelessWidget {
       children: [
         PhotoViewGallery.builder(
             pageController: pageController,
-            scrollPhysics: BouncingScrollPhysics(),
-            loadingBuilder: (context, event) => CircleLoading(),
+            scrollPhysics: const BouncingScrollPhysics(),
+            loadingBuilder: (context, event) => const CircleLoading(),
             itemCount: images.length,
             builder: (context, index) {
               return PhotoViewGalleryPageOptions(
@@ -42,7 +42,7 @@ class GalleryPhoto extends StatelessWidget {
                     dotWidth: 10),
               ),
             )),
-        Align(alignment: Alignment.topRight, child: CloseButton()),
+        const Align(alignment: Alignment.topRight, child: CloseButton()),
       ],
     );
   }

@@ -277,10 +277,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                             width: 15,
-                            child: const Icon(
+                            child: Icon(
                               Icons.location_on,
                               color: Colors.grey,
                               size: 15,
@@ -300,10 +300,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Row(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                             width: 15,
-                            child: const Icon(
+                            child: Icon(
                               Icons.fiber_manual_record,
                               color: Colors.grey,
                               size: 10,
@@ -466,7 +466,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Expanded(
@@ -475,10 +475,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                     destination.name,
-                    style: TextStyle(
+                    style: const TextStyle(
                         height: 1, fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
@@ -506,15 +506,15 @@ class _HomePageState extends State<HomePage> {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text(
                     destination.description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style:
-                        TextStyle(height: 1, fontSize: 14, color: Colors.grey),
+                    style: const TextStyle(
+                        height: 1, fontSize: 14, color: Colors.grey),
                   )
                 ],
               ),

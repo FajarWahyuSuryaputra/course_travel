@@ -1,7 +1,7 @@
 import 'package:course_travel/features/destination/domain/entities/DestinationEntity.dart';
 
 class DestinationModel extends DestinationEntity {
-  DestinationModel(
+  const DestinationModel(
       {required super.id,
       required super.name,
       required super.category,
