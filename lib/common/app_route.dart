@@ -1,6 +1,7 @@
 import 'package:course_travel/features/destination/domain/entities/DestinationEntity.dart';
 import 'package:course_travel/features/destination/presentation/pages/dashboard.dart';
 import 'package:course_travel/features/destination/presentation/pages/detail_destination.dart';
+import 'package:course_travel/features/destination/presentation/pages/search_destination_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
@@ -19,6 +20,9 @@ class AppRoute {
         }
         return MaterialPageRoute(
             builder: (context) => DetailDestination(destination: destination));
+      case searchDestination:
+        return MaterialPageRoute(
+            builder: (context) => const SearchDestinationPage());
       default:
         return _notFoundPage;
     }
